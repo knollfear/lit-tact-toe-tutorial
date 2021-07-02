@@ -10,6 +10,15 @@ export class Game extends LitElement {
 
   static get styles() {
     return css`
+     .game {
+       display: flex;
+       flex-direction: row;
+     }
+
+     .game-info {
+       margin-left: 20px;
+     }
+
    `;
   }
 
@@ -19,10 +28,16 @@ export class Game extends LitElement {
 
   render() {
     return html`
-     <div>
-       GAME IS HERE
+     <div class="game">
+       <div class="game-board">
+         <lit-tac-toe-board ></lit-tac-toe-board>
+       </div>
+       <div class="game-info">
+         <div>{/* status */}</div>
+         <ol>{/* TODO */}</ol>
+       </div>
      </div>
-
    `;
   }
 }
+
