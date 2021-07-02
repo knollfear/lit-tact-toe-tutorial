@@ -22,7 +22,7 @@ export class Board extends LitElement {
     super();
   }
   renderSquare(i) {
-    return html`<lit-tac-toe-square></lit-tac-toe-square>`;
+    return html`<lit-tac-toe-square .value=${i}></lit-tac-toe-square>`;
   }
   render() {
     const status = 'Next player: X';

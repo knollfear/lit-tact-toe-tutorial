@@ -4,7 +4,7 @@ export class Square extends LitElement {
 
   static get properties() {
     return {
-
+      value: {type: Number}
     };
   }
 
@@ -37,9 +37,9 @@ export class Square extends LitElement {
 
   render() {
     return html`
-     <button class="square">
-
-     </button>
+      <button class="square" @click=${() => this.value="X"}>
+        ${this.value}
+      </button>
 
    `;
   }
