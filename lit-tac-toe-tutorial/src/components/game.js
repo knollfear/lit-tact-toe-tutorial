@@ -5,6 +5,7 @@ export class Game extends LitElement {
   static get properties() {
     return {
       squares: {type: Array},
+      xIsNext: {type: Boolean},
     };
   }
 
@@ -25,12 +26,14 @@ export class Game extends LitElement {
   constructor() {
     super();
     this.squares = Array(9).fill(null)
+    this.xIsNext = true
   }
 
   handleClick(event){
 
     const squares = this.squares.slice();
-    squares[event.detail] = 'X';
+    squares[event.detail] = this.xIsNext ? 'X' : 'O';
+    this.xIsNext = !this.xIsNext
     this.squares = squares
   }
 
@@ -39,7 +42,9 @@ export class Game extends LitElement {
      <div class="game">
        <div class="game-board">
          <lit-tac-toe-board .squares=${this.squares}
-                            @board-clicked=${this.handleClick} >
+                            @board-clicked=${this.handleClick}
+                            .xIsNext=${this.xIsNext}
+         >
 
          </lit-tac-toe-board>
        </div>
