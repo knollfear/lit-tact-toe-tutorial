@@ -4,7 +4,7 @@ export class Game extends LitElement {
 
   static get properties() {
     return {
-
+      squares: {type: Array},
     };
   }
 
@@ -24,13 +24,24 @@ export class Game extends LitElement {
 
   constructor() {
     super();
+    this.squares = Array(9).fill(null)
+  }
+
+  handleClick(event){
+
+    const squares = this.squares.slice();
+    squares[event.detail] = 'X';
+    this.squares = squares
   }
 
   render() {
     return html`
      <div class="game">
        <div class="game-board">
-         <lit-tac-toe-board ></lit-tac-toe-board>
+         <lit-tac-toe-board .squares=${this.squares}
+                            @board-clicked=${this.handleClick} >
+
+         </lit-tac-toe-board>
        </div>
        <div class="game-info">
          <div>{/* status */}</div>

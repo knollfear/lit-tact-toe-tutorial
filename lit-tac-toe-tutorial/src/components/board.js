@@ -4,7 +4,7 @@ export class Board extends LitElement {
 
   static get properties() {
     return {
-
+      squares: {type: Array},
     };
   }
 
@@ -21,8 +21,14 @@ export class Board extends LitElement {
   constructor() {
     super();
   }
+
+  handleClick(position){
+
+    this.dispatchEvent(new CustomEvent("board-clicked", { detail: position }));
+  }
+
   renderSquare(i) {
-    return html`<lit-tac-toe-square .value=${i}></lit-tac-toe-square>`;
+    return html`<lit-tac-toe-square .value=${this.squares[i]} @square-clicked=${() => this.handleClick(i)} ></lit-tac-toe-square>`;
   }
   render() {
     const status = 'Next player: X';

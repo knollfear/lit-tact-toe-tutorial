@@ -35,9 +35,13 @@ export class Square extends LitElement {
     super();
   }
 
+  handleClick(position){
+    this.dispatchEvent(new CustomEvent("square-clicked", { detail: position }));
+  }
+
   render() {
     return html`
-      <button class="square" @click=${() => this.value="X"}>
+      <button class="square" @click=${() => this.handleClick(this.value)} >
         ${this.value}
       </button>
 
